@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "RRXvL1bGzec=",
+  "success": true,
+  "projectFilePath": "/home/raisinbrandon/Projects/Docado/Docado.DataAccess/Docado.DataAccess.csproj",
+  "expectedPackageFiles": [
+    "/home/raisinbrandon/.nuget/packages/microsoft.aspnetcore.app.ref/9.0.9/microsoft.aspnetcore.app.ref.9.0.9.nupkg.sha512"
+  ],
+  "logs": []
+}
