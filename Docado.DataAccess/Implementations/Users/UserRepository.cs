@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Docado.DataAccess.Implementations.Users;
 
-public class UserRepository(DocadoDbContext context) : IUserRepository {
+internal class UserRepository(DocadoDbContext context) : IUserRepository {
     public async Task<IEnumerable<UserRecord>> GetAll() {
         IEnumerable<UserRecord> records = await 
             context.Users.ToListAsync();

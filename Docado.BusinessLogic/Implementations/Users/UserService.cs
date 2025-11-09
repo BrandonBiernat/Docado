@@ -37,49 +37,6 @@ public class UserService(
         return entities;
     }
 
-    public async Task<IServiceResult> CreateUser(
-        string password,
-        Action<IUserEntityProperties> configure) {
-        List<IdentityError> registrationErrors = [];
-        
-        UserEntityProperties properties = new ();
-        configure(properties);
-        
-        UserRecord user = UserRecord.Build(
-            firstName: properties.FirstName,
-            lastName: properties.LastName);
-        
-        string pattern = @"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$";
-        if (!Regex.IsMatch(properties.Email, pattern)) {
-            registrationErrors.Add(new IdentityError {
-                Code = "Email",
-                Description = "Invalid email address",
-            });
-        }
-
-        if (registrationErrors.Any()) {
-            return new ServiceResult(
-                value: registrationErrors,
-                isSuccess: false);
-        }
-
-        IdentityResult result = await 
-            userManager.CreateAsync(user, password);
-        
-        registrationErrors.AddRange(result.Errors);
-
-        if (!result.Succeeded) {
-            return new ServiceResult(
-                value: registrationErrors,
-                isSuccess: false);
-        }
-        
-        string token = await 
-            userManager.GenerateEmailConfirmationTokenAsync(user);
-        
-        return new ServiceResult();
-    }
-
     public async Task<IServiceResult> UpdateUser(
         string userId, 
         Action<IUserEntityProperties> configure) {

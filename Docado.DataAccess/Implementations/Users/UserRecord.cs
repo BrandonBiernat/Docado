@@ -7,14 +7,17 @@ public class UserRecord : IdentityUser {
     public UserRecord() { }
     private UserRecord(
         string firstName,
-        string lastName) : base() {
+        string lastName,
+        string email) : base() {
         FirstName = firstName;
         LastName = lastName;
+        Email = email;
         CreationDate = DateTime.Now;
     }
 
     public string FirstName { get; set; } = null!;
     public string LastName { get; set; } = null!;
+    public string Email { get; set;  }
     public DateTime CreationDate { get; set; }
     
     public UserRecord Clone() =>
@@ -23,6 +26,7 @@ public class UserRecord : IdentityUser {
 
     public static UserRecord Build(
         string firstName,
-        string lastName) =>
-        new(firstName, lastName);
+        string lastName,
+        string email) =>
+        new(firstName, lastName, email);
 }

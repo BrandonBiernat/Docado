@@ -20,10 +20,6 @@ public interface IUserService {
         return entity;
     }
 
-    Task<IServiceResult> CreateUser(
-        string password,
-        Action<IUserEntityProperties> configure);
-    
     Task<IServiceResult> UpdateUser(
         string userId,
         Action<IUserEntityProperties> configure);
