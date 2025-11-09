@@ -6,4 +6,9 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Docado.DataAccess\Docado.DataAccess.csproj" />
+      <ProjectReference Include="..\Docado.ExtensionMethods\Docado.ExtensionMethods.csproj" />
+    </ItemGroup>
+
 </Project>
